@@ -117,10 +117,10 @@ Note: The files shown above are examples of the main project files. Refer to the
 
 ### Clone the Repository
 
-Replace `YOUR-GITHUB-USERNAME` with the repository owner's GitHub username.
+
 
 ```bash
-git clone https://github.com/YOUR-GITHUB-USERNAME/respawn-pc-services.git
+git clone https://github.com/rhaeniel-code/respawn-pc-services/tree/main
 cd respawn-pc-services
 ```
 

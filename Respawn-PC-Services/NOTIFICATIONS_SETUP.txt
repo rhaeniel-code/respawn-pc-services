@@ -1,0 +1,21 @@
+RESPAWN PC SERVICES - NOTIFICATION CENTER
+
+WHAT WAS ADDED
+- Shared real-time notification bell on customer navigation and admin top bars.
+- Notifications for booking status changes, booking payment/receipt updates, store order status/payment updates.
+- Admin notifications for recent new bookings and new store orders.
+- Unread count, mark one as read by opening it, and Mark all read.
+- Clickable notifications open the related booking, receipt, order list, or admin screen.
+- Dropdown is anchored to the bell and sized for smaller screens to reduce overlap.
+- Per-user notification records are stored under users/{uid}/notifications/{notificationId}.
+
+DEPLOY
+1. Extract this project into your existing project folder (back up your current folder first).
+2. From PowerShell in the project folder run:
+   firebase deploy --only hosting,firestore:rules
+3. Open the site and hard-refresh with Ctrl+Shift+R.
+
+NOTES
+- This is an in-app notification center. It does not send push notifications while the site is closed.
+- A user's notification list is private; admins may write status notifications for customers as part of the app workflow.
+- Existing products and stock are unchanged by this feature.

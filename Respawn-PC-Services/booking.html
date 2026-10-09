@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Book a Service - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a
+                href="/index.html"
+                class="logo"
+            >
+                RESPAWN<span>/</span>PC SERVICES
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="/index.html">
+                    Home
+                </a>
+
+                <a href="/dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="/my-bookings.html">
+                    My Bookings
+                </a>
+
+                <a href="/store.html">
+                    PC Store
+                </a>
+
+                <button
+                    id="logoutButton"
+                    type="button"
+                    class="nav-logout"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <main class="booking-page">
+
+        <div class="booking-container">
+
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    SERVICE APPOINTMENT
+                </p>
+
+
+                <h1>
+                    Book a PC Service
+                </h1>
+
+
+                <p>
+                    Choose a service, schedule your
+                    drop-off, describe the issue, then
+                    review everything before submitting.
+                </p>
+
+
+                <div class="booking-notice">
+
+                    <div>
+
+                        <strong>
+                            Hours
+                        </strong>
+
+                        <span>
+                            Monday–Saturday ·
+                            10:00 AM–8:00 PM
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Sunday
+                        </strong>
+
+                        <span>
+                            Closed
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Pickup
+                        </strong>
+
+                        <span>
+                            Next business day
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Lead time
+                        </strong>
+
+                        <span>
+                            At least 24 hours in advance
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <div
+                id="activeBookingNotice"
+                class="active-booking-notice"
+                hidden
+            >
+
+                <div>
+
+                    <strong>
+                        You already have an active booking.
+                    </strong>
+
+                    <p>
+                        Please complete or cancel it before
+                        creating another appointment.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/my-bookings.html"
+                    class="secondary-button"
+                >
+                    View My Booking
+                </a>
+
+            </div>
+
+
+            <div
+                class="booking-progress"
+                aria-label="Booking progress"
+            >
+
+                <button
+                    type="button"
+                    class="progress-step active"
+                    data-step="1"
+                >
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        Customer
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="progress-step"
+                    data-step="2"
+                >
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        Service
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="progress-step"
+                    data-step="3"
+                >
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        Schedule
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="progress-step"
+                    data-step="4"
+                >
+                    <span>
+                        04
+                    </span>
+
+                    <strong>
+                        Issue
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="progress-step"
+                    data-step="5"
+                >
+                    <span>
+                        05
+                    </span>
+
+                    <strong>
+                        Review
+                    </strong>
+
+                </button>
+
+            </div>
+
+
+            <form id="bookingForm">
+
+
+                <section
+                    class="booking-step booking-section active"
+                    data-step-content="1"
+                >
+
+                    <div class="step-heading">
+
+                        <span class="section-number">
+                            01
+                        </span>
+
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                STEP 1
+                            </p>
+
+                            <h2>
+                                Customer Information
+                            </h2>
+
+                            <p>
+                                Your account details are
+                                filled in automatically.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="customerName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                placeholder="Loading..."
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerEmail">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="customerEmail"
+                                placeholder="Loading..."
+                                readonly
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="booking-step booking-section"
+                    data-step-content="2"
+                    hidden
+                >
+
+                    <div class="step-heading">
+
+                        <span class="section-number">
+                            02
+                        </span>
+
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                STEP 2
+                            </p>
+
+                            <h2>
+                                Choose a Service
+                            </h2>
+
+                            <p>
+                                Select the service that best
+                                matches your PC.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="service-options service-options-wizard"
+                    >
+
+
+                        <label class="service-option">
+
+                            <input
+                                type="radio"
+                                name="service"
+                                value="Gamer Rig Deep Cleaning"
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Gamer Rig Deep Cleaning
+                                </strong>
+
+                                <small>
+                                    Complete internal cleaning
+                                    and dust removal.
+                                </small>
+
+                                <em
+                                    class="service-price"
+                                    data-service="Gamer Rig Deep Cleaning"
+                                >
+                                    ₱500.00
+                                </em>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="service-option">
+
+                            <input
+                                type="radio"
+                                name="service"
+                                value="Thermal Paste Replacement"
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Thermal Paste Replacement
+                                </strong>
+
+                                <small>
+                                    Replace old thermal paste
+                                    to improve heat transfer.
+                                </small>
+
+                                <em
+                                    class="service-price"
+                                    data-service="Thermal Paste Replacement"
+                                >
+                                    ₱700.00
+                                </em>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="service-option">
+
+                            <input
+                                type="radio"
+                                name="service"
+                                value="Diagnostic Checks"
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Diagnostic Checks
+                                </strong>
+
+                                <small>
+                                    Diagnose hardware and
+                                    performance problems.
+                                </small>
+
+                                <em
+                                    class="service-price"
+                                    data-service="Diagnostic Checks"
+                                >
+                                    ₱300.00
+                                </em>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="booking-step booking-section"
+                    data-step-content="3"
+                    hidden
+                >
+
+                    <div class="step-heading">
+
+                        <span class="section-number">
+                            03
+                        </span>
+
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                STEP 3
+                            </p>
+
+                            <h2>
+                                Schedule Drop-Off
+                            </h2>
+
+                            <p>
+                                Only dates with at least one
+                                open time slot are shown.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="schedule-header">
+
+                        <div>
+
+                            <h3>
+                                Drop-Off Date
+                            </h3>
+
+                            <p class="schedule-description">
+                                Browse the next available
+                                appointments.
+                            </p>
+
+                        </div>
+
+
+                        <div class="date-navigation">
+
+                            <button
+                                id="previousDates"
+                                type="button"
+                                class="date-nav-button"
+                                aria-label="Previous dates"
+                            >
+                                ‹
+                            </button>
+
+
+                            <button
+                                id="nextDates"
+                                type="button"
+                                class="date-nav-button"
+                                aria-label="Next dates"
+                            >
+                                ›
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        id="bookingDate"
+                    >
+
+
+                    <div
+                        id="availableDates"
+                        class="date-options"
+                    ></div>
+
+
+                    <div
+                        id="dateMessage"
+                        class="schedule-message"
+                    >
+                        Loading available dates...
+                    </div>
+
+
+                    <div class="schedule-time-block">
+
+                        <h3>
+                            Drop-Off Time
+                        </h3>
+
+
+                        <p class="schedule-description">
+                            30-minute appointment slots from
+                            10:00 AM to 8:00 PM.
+                        </p>
+
+
+                        <input
+                            type="hidden"
+                            id="bookingTime"
+                        >
+
+
+                        <div
+                            id="availableTimes"
+                            class="time-options"
+                        ></div>
+
+
+                        <div
+                            id="timeMessage"
+                            class="schedule-message"
+                        >
+                            Select a date first.
+                        </div>
+
+
+                        <div class="pickup-information">
+
+                            <strong>
+                                Pickup Schedule
+                            </strong>
+
+
+                            <p id="pickupPreview">
+                                Select a drop-off date to see
+                                your expected pickup date.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="booking-step booking-section"
+                    data-step-content="4"
+                    hidden
+                >
+
+                    <div class="step-heading">
+
+                        <span class="section-number">
+                            04
+                        </span>
+
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                STEP 4
+                            </p>
+
+                            <h2>
+                                Tell Us About the Problem
+                            </h2>
+
+                            <p>
+                                A clear description helps the
+                                technician prepare.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="description"
+                        >
+                            PC Issue / Description
+                        </label>
+
+
+                        <textarea
+                            id="description"
+                            rows="8"
+                            maxlength="1000"
+                            placeholder="Example: My PC gets very hot while gaming and shuts down after about 30 minutes."
+                            required
+                        ></textarea>
+
+
+                        <div class="field-hint">
+
+                            <span>
+                                Include symptoms, sounds,
+                                recent changes, or error messages.
+                            </span>
+
+                            <span>
+
+                                <strong id="descriptionCount">
+                                    0
+                                </strong>
+
+                                /1000
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="booking-step booking-section"
+                    data-step-content="5"
+                    hidden
+                >
+
+                    <div class="step-heading">
+
+                        <span class="section-number">
+                            05
+                        </span>
+
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                STEP 5
+                            </p>
+
+                            <h2>
+                                Review Appointment
+                            </h2>
+
+                            <p>
+                                Check the details below before
+                                confirming your booking.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="review-card">
+
+                        <div class="review-row">
+
+                            <span>
+                                Customer
+                            </span>
+
+                            <strong id="reviewCustomer">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="review-row">
+
+                            <span>
+                                Service
+                            </span>
+
+                            <strong id="reviewService">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="review-row">
+
+                            <span>
+                                Price
+                            </span>
+
+                            <strong id="reviewPrice">
+                                ₱0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="review-row">
+
+                            <span>
+                                Drop-Off
+                            </span>
+
+                            <strong id="reviewDropOff">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="review-row">
+
+                            <span>
+                                Expected Pickup
+                            </span>
+
+                            <strong id="reviewPickup">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="review-row review-description">
+
+                            <span>
+                                Issue
+                            </span>
+
+                            <p id="reviewDescription">
+                                —
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="confirmation-note">
+
+                        <strong>
+                            Before you confirm
+                        </strong>
+
+                        <p>
+                            This creates one active appointment
+                            for your account. Payment is recorded
+                            later by the service administrator.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <div class="booking-submit-section">
+
+                    <div
+                        id="bookingMessage"
+                        class="form-message"
+                    ></div>
+
+
+                    <div class="wizard-buttons">
+
+                        <button
+                            type="button"
+                            id="backStep"
+                            class="secondary-button"
+                            hidden
+                        >
+                            ← Back
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="nextStep"
+                            class="primary-button"
+                        >
+                            Continue →
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            id="submitBooking"
+                            class="primary-button"
+                            hidden
+                        >
+                            Confirm Appointment
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <section
+                id="bookingSuccess"
+                class="booking-success-card"
+                hidden
+            >
+
+                <div class="success-check">
+                    ✓
+                </div>
+
+
+                <p class="eyebrow">
+                    BOOKING CONFIRMED
+                </p>
+
+
+                <h2>
+                    Your appointment is in the queue.
+                </h2>
+
+
+                <p id="successMessage">
+                    Your booking was created successfully.
+                </p>
+
+
+                <div class="success-summary">
+
+                    <div>
+
+                        <span>
+                            SERVICE
+                        </span>
+
+                        <strong id="successService">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            DROP-OFF
+                        </span>
+
+                        <strong id="successDropOff">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            PICKUP
+                        </span>
+
+                        <strong id="successPickup">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="button-row centered">
+
+                    <a
+                        id="successDetailsLink"
+                        href="/my-bookings.html"
+                        class="primary-button"
+                    >
+                        View Booking →
+                    </a>
+
+
+                    <a
+                        href="/dashboard.html"
+                        class="secondary-button"
+                    >
+                        Go to Dashboard
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Respawn PC Services.
+            Built for gamers.
+        </p>
+
+    </footer>
+
+
+    <script
+        type="module"
+        src="/js/booking.js"
+    ></script>
+
+
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+
+</html>

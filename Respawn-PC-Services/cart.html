@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Respawn PC Services</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">RESPAWN<span>/</span>PC SERVICES</a>
+            <div class="nav-links">
+                <a href="/store.html">PC Store</a>
+                <a href="/dashboard.html">Dashboard</a>
+                <a href="/my-orders.html">My Orders</a>
+                <a href="/cart.html" class="store-cart-nav">Cart <span data-cart-count hidden>0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="store-page">
+        <div class="store-container">
+            <section class="store-section-heading store-page-heading">
+                <div>
+                    <p class="eyebrow">PC STORE</p>
+                    <h1>Your Cart</h1>
+                    <p>Review your components before checkout.</p>
+                </div>
+                <a href="/store.html" class="secondary-button">Continue Shopping</a>
+            </section>
+
+            <section id="cartEmpty" class="store-empty" hidden>
+                <div class="store-empty-icon">0</div>
+                <h3>Your cart is empty</h3>
+                <p>Add a component or accessory from the store.</p>
+                <a href="/store.html" class="primary-button">Browse Store</a>
+            </section>
+
+            <section id="cartContent" class="store-cart-layout" hidden>
+                <div>
+                    <div id="cartItems" class="store-cart-items"></div>
+                </div>
+
+                <aside class="store-summary-card">
+                    <p class="card-eyebrow">ORDER SUMMARY</p>
+                    <h2>Checkout</h2>
+                    <div class="store-summary-row">
+                        <span>Items</span>
+                        <strong id="cartItemCount">0</strong>
+                    </div>
+                    <div class="store-summary-row store-summary-total">
+                        <span>Total</span>
+                        <strong id="cartTotal">₱0.00</strong>
+                    </div>
+                    <a id="checkoutLink" href="/checkout.html" class="primary-button full-width">Proceed to Checkout</a>
+                    <p class="store-summary-note">Pickup orders are confirmed by the Respawn admin team.</p>
+                </aside>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="/js/cart.js"></script>
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+</html>

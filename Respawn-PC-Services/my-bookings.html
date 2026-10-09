@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        My Bookings - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a
+                href="/index.html"
+                class="logo"
+            >
+                RESPAWN<span>/</span>PC SERVICES
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="/index.html">
+                    Home
+                </a>
+
+                <a href="/dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="/store.html">
+                    PC Store
+                </a>
+
+                <a
+                    href="/booking.html"
+                    class="nav-button"
+                >
+                    Book a Service
+                </a>
+
+                <button
+                    id="logoutButton"
+                    type="button"
+                    class="nav-logout"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <main class="dashboard-page">
+
+        <div class="dashboard-container">
+
+
+            <section
+                class="dashboard-heading dashboard-heading-row"
+            >
+
+                <div>
+
+                    <p class="eyebrow">
+                        APPOINTMENTS
+                    </p>
+
+                    <h1>
+                        My Bookings
+                    </h1>
+
+                    <p>
+                        Track active appointments, completed
+                        services, payment status, and receipts.
+                    </p>
+
+                </div>
+
+
+                <div class="live-status">
+
+                    <span class="live-dot"></span>
+
+                    LIVE UPDATES
+
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-card">
+
+                <div class="list-toolbar">
+
+                    <div>
+
+                        <p class="card-eyebrow">
+                            BOOKING HISTORY
+                        </p>
+
+                        <h2>
+                            All Appointments
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        id="bookingSummary"
+                        class="toolbar-count"
+                    >
+                        0 bookings
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="loadingBookings"
+                    class="skeleton-list"
+                >
+
+                    <div class="skeleton skeleton-card"></div>
+
+                    <div class="skeleton skeleton-card"></div>
+
+                </div>
+
+
+                <div
+                    id="bookingsList"
+                    class="bookings-list"
+                ></div>
+
+
+                <div
+                    id="emptyBookings"
+                    class="empty-state"
+                    hidden
+                >
+
+                    <div class="empty-icon">
+                        00
+                    </div>
+
+                    <h3>
+                        No bookings yet
+                    </h3>
+
+                    <p>
+                        Your appointments will appear here
+                        as soon as you create one.
+                    </p>
+
+                    <a
+                        href="/booking.html"
+                        class="primary-button"
+                    >
+                        Book a Service →
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Respawn PC Services.
+            Built for gamers.
+        </p>
+
+    </footer>
+
+
+    <script
+        type="module"
+        src="/js/my-bookings.js"
+    ></script>
+
+
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - Respawn PC Services</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">RESPAWN<span>/</span>PC SERVICES</a>
+            <div class="nav-links">
+                <a href="/store.html">PC Store</a>
+                <a href="/dashboard.html">Dashboard</a>
+                <a href="/my-orders.html">My Orders</a>
+                <a href="/cart.html" class="store-cart-nav">Cart <span data-cart-count hidden>0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="store-page">
+        <div class="store-container narrow-store-container">
+            <a href="/store.html" class="store-back-link">← Back to Store</a>
+
+            <section id="productLoading" class="store-detail-card">
+                <div class="store-detail-placeholder"></div>
+            </section>
+
+            <section id="productContent" class="store-detail-card" hidden>
+                <div class="store-detail-visual" id="productVisual"></div>
+                <div class="store-detail-copy">
+                    <p id="productCategory" class="eyebrow">PRODUCT</p>
+                    <h1 id="productName">Product</h1>
+                    <p id="productDescription" class="store-detail-description"></p>
+                    <div class="store-detail-price" id="productPrice">₱0.00</div>
+                    <div class="store-stock-line">
+                        <span id="productStockBadge" class="store-stock-badge">In stock</span>
+                        <span id="productStockText">0 available</span>
+                    </div>
+
+                    <div class="store-detail-purchase">
+                        <label class="store-quantity-label" for="productQuantity">Quantity</label>
+                        <div class="store-quantity-control">
+                            <button id="decreaseQuantity" type="button" aria-label="Decrease quantity">−</button>
+                            <input id="productQuantity" type="number" min="1" value="1">
+                            <button id="increaseQuantity" type="button" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button id="addToCartButton" type="button" class="primary-button">Add to Cart</button>
+                    </div>
+
+                    <div id="productMessage" class="form-message"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="/js/product.js"></script>
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+</html>

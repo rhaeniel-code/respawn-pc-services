@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Receipt - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar no-print">
+
+        <div class="nav-container">
+
+            <a
+                href="/index.html"
+                class="logo"
+            >
+                RESPAWN<span>/</span>PC SERVICES
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="/dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="/my-bookings.html">
+                    My Bookings
+                </a>
+
+                <a href="/store.html">
+                    PC Store
+                </a>
+
+                <button
+                    id="logoutButton"
+                    type="button"
+                    class="nav-logout"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <main class="receipt-page">
+
+        <div class="receipt-container">
+
+
+            <div
+                id="receiptLoading"
+                class="receipt-loading"
+            >
+                Loading receipt...
+            </div>
+
+
+            <section
+                id="receiptContent"
+                class="receipt-card"
+                hidden
+            >
+
+                <div class="receipt-header">
+
+                    <div class="receipt-brand-mark">
+                        R / PS
+                    </div>
+
+                    <p class="eyebrow">
+                        PAYMENT RECEIPT
+                    </p>
+
+
+                    <h1>
+                        RESPAWN / PC SERVICES
+                    </h1>
+
+
+                    <p>
+                        Gaming PC Repair &amp; Services
+                    </p>
+
+                </div>
+
+
+                <div class="receipt-status">
+
+                    <span>
+                        PAID
+                    </span>
+
+                </div>
+
+
+                <div class="receipt-meta">
+
+                    <div>
+
+                        <span>
+                            RECEIPT NUMBER
+                        </span>
+
+                        <strong id="receiptNumber">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            BOOKING ID
+                        </span>
+
+                        <strong id="receiptBookingId">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="receipt-divider"></div>
+
+
+                <div class="receipt-customer">
+
+                    <h2>
+                        Customer
+                    </h2>
+
+
+                    <p>
+
+                        <strong>
+                            Name:
+                        </strong>
+
+                        <span id="receiptCustomer">
+                            —
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Email:
+                        </strong>
+
+                        <span id="receiptEmail">
+                            —
+                        </span>
+
+                    </p>
+
+                </div>
+
+
+                <div class="receipt-divider"></div>
+
+
+                <div class="receipt-service">
+
+                    <h2>
+                        Service Details
+                    </h2>
+
+
+                    <div class="receipt-line">
+
+                        <span id="receiptService">
+                            Service
+                        </span>
+
+                        <strong id="receiptAmount">
+                            ₱0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="receipt-line receipt-total">
+
+                        <span>
+                            TOTAL
+                        </span>
+
+                        <strong id="receiptTotal">
+                            ₱0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="receipt-divider"></div>
+
+
+                <div class="receipt-information">
+
+                    <p>
+
+                        <strong>
+                            Drop-Off:
+                        </strong>
+
+                        <span id="receiptDropOff">
+                            —
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Pickup:
+                        </strong>
+
+                        <span id="receiptPickup">
+                            —
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Payment Method:
+                        </strong>
+
+                        <span id="receiptMethod">
+                            —
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Payment Recorded:
+                        </strong>
+
+                        <span id="receiptPaidAt">
+                            —
+                        </span>
+
+                    </p>
+
+                </div>
+
+
+                <div class="receipt-footer">
+
+                    <p>
+                        Thank you for choosing
+                        Respawn PC Services.
+                    </p>
+
+
+                    <p>
+                        Keep Your Rig Battle Ready.
+                    </p>
+
+                </div>
+
+
+                <div class="receipt-actions no-print">
+
+                    <button
+                        id="printReceipt"
+                        type="button"
+                        class="primary-button"
+                    >
+                        Print Receipt
+                    </button>
+
+
+                    <a
+                        href="/my-bookings.html"
+                        class="secondary-button"
+                    >
+                        Back to Bookings
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <section
+                id="receiptError"
+                class="receipt-error"
+                hidden
+            >
+
+                <h2>
+                    Receipt Unavailable
+                </h2>
+
+
+                <p id="receiptErrorMessage">
+                    Unable to load the receipt.
+                </p>
+
+
+                <a
+                    href="/my-bookings.html"
+                    class="primary-button"
+                >
+                    Back to Bookings
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="/js/receipt.js"
+    ></script>
+
+
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+
+</html>

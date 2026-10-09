@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Booking Details - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a
+                href="/index.html"
+                class="logo"
+            >
+                RESPAWN<span>/</span>PC SERVICES
+            </a>
+
+
+            <div class="nav-links">
+
+                <a
+                    id="backDashboard"
+                    href="/dashboard.html"
+                >
+                    Dashboard
+                </a>
+
+                <a href="/my-bookings.html">
+                    My Bookings
+                </a>
+
+                <a href="/store.html">
+                    PC Store
+                </a>
+
+                <button
+                    id="logoutButton"
+                    type="button"
+                    class="nav-logout"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <main class="dashboard-page">
+
+        <div class="dashboard-container narrow-container">
+
+
+            <section
+                id="detailsLoading"
+                class="dashboard-card loading-panel"
+            >
+
+                <div class="skeleton skeleton-wide"></div>
+
+                <div class="skeleton skeleton-tall"></div>
+
+                <div class="skeleton skeleton-tall"></div>
+
+            </section>
+
+
+            <section
+                id="detailsContent"
+                hidden
+            >
+
+                <div
+                    class="dashboard-heading dashboard-heading-row"
+                >
+
+                    <div>
+
+                        <p class="eyebrow">
+                            BOOKING DETAILS
+                        </p>
+
+                        <h1 id="detailsTitle">
+                            PC Service
+                        </h1>
+
+                        <p id="detailsSubtitle">
+                            Appointment information
+                        </p>
+
+                    </div>
+
+
+                    <span
+                        id="detailsStatus"
+                        class="status-badge status-pending"
+                    >
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <section class="dashboard-card">
+
+                    <div class="dashboard-card-heading">
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                APPOINTMENT
+                            </p>
+
+                            <h2>
+                                Schedule
+                            </h2>
+
+                        </div>
+
+                        <div class="icon-box">
+                            CAL
+                        </div>
+
+                    </div>
+
+
+                    <div class="details-grid">
+
+                        <div>
+
+                            <span>
+                                DROP-OFF
+                            </span>
+
+                            <strong id="detailsDropOff">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                PICKUP
+                            </span>
+
+                            <strong id="detailsPickup">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                BOOKING ID
+                            </span>
+
+                            <strong id="detailsBookingId">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                CREATED
+                            </span>
+
+                            <strong id="detailsCreated">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="dashboard-card">
+
+                    <div class="dashboard-card-heading">
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                CUSTOMER
+                            </p>
+
+                            <h2>
+                                Account
+                            </h2>
+
+                        </div>
+
+
+                        <div class="icon-box">
+                            USER
+                        </div>
+
+                    </div>
+
+
+                    <div class="details-grid">
+
+                        <div>
+
+                            <span>
+                                NAME
+                            </span>
+
+                            <strong id="detailsCustomer">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                EMAIL
+                            </span>
+
+                            <strong id="detailsEmail">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="dashboard-card">
+
+                    <div class="dashboard-card-heading">
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                SERVICE
+                            </p>
+
+                            <h2>
+                                Work Request
+                            </h2>
+
+                        </div>
+
+
+                        <div class="icon-box">
+                            PC
+                        </div>
+
+                    </div>
+
+
+                    <div class="details-service-price">
+
+                        <strong id="detailsService">
+                            —
+                        </strong>
+
+                        <span id="detailsPrice">
+                            ₱0.00
+                        </span>
+
+                    </div>
+
+
+                    <div class="details-description">
+
+                        <span>
+                            ISSUE DESCRIPTION
+                        </span>
+
+                        <p id="detailsDescription">
+                            —
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section class="dashboard-card">
+
+                    <div class="dashboard-card-heading">
+
+                        <div>
+
+                            <p class="card-eyebrow">
+                                PAYMENT
+                            </p>
+
+                            <h2>
+                                Payment Status
+                            </h2>
+
+                        </div>
+
+
+                        <div class="icon-box">
+                            PHP
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="paymentStatusPanel"
+                        class="payment-status-panel"
+                    ></div>
+
+
+                    <div
+                        class="button-row"
+                        id="receiptActions"
+                    ></div>
+
+                </section>
+
+
+                <div class="button-row">
+
+                    <a
+                        href="/my-bookings.html"
+                        class="secondary-button"
+                    >
+                        ← Back to My Bookings
+                    </a>
+
+                    <a
+                        href="/dashboard.html"
+                        class="primary-button"
+                    >
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <section
+                id="detailsError"
+                class="dashboard-card error-state"
+                hidden
+            >
+
+                <div class="empty-icon">
+                    !
+                </div>
+
+
+                <h2>
+                    Booking Unavailable
+                </h2>
+
+
+                <p id="detailsErrorMessage">
+                    We could not load this booking.
+                </p>
+
+
+                <a
+                    href="/my-bookings.html"
+                    class="primary-button"
+                >
+                    Back to My Bookings
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Respawn PC Services.
+            Built for gamers.
+        </p>
+
+    </footer>
+
+
+    <script
+        type="module"
+        src="/js/booking-details.js"
+    ></script>
+
+
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Admin Dashboard - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <aside class="admin-sidebar">
+
+
+        <div class="admin-brand">
+
+            <a
+                href="/index.html"
+                class="logo"
+            >
+                RESPAWN<span>/</span>
+            </a>
+
+
+            <p>
+                ADMIN CONTROL
+            </p>
+
+        </div>
+
+
+        <nav class="admin-sidebar-nav">
+
+            <a
+                href="#adminDashboard"
+                class="admin-sidebar-link active"
+            >
+
+                <span class="sidebar-icon">
+                    DB
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="#bookingsSection"
+                class="admin-sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    BK
+                </span>
+
+                Bookings
+
+            </a>
+
+
+            <a
+                href="#customersSection"
+                class="admin-sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    CU
+                </span>
+
+                Customers
+
+            </a>
+
+
+            <a
+                href="#paymentsSection"
+                class="admin-sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ₱
+                </span>
+
+                Payments
+
+            </a>
+
+
+            <a
+                href="/admin-products.html"
+                class="admin-sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    PC
+                </span>
+
+                Store Inventory
+
+            </a>
+
+
+            <a
+                href="/admin-orders.html"
+                class="admin-sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    OR
+                </span>
+
+                Store Orders
+
+            </a>
+
+
+            <a
+                href="#reportsSection"
+                class="admin-sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    RP
+                </span>
+
+                Reports
+
+            </a>
+
+
+            <a
+                href="/index.html"
+                class="admin-sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ↗
+                </span>
+
+                Public Site
+
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+
+            <div class="admin-user-mini">
+
+                <span class="admin-avatar">
+                    A
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <small>
+                        Respawn PC Services
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="logoutButton"
+                type="button"
+                class="admin-sidebar-logout"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <div class="admin-main">
+
+
+        <header class="admin-topbar">
+
+            <div class="admin-topbar-copy">
+
+                <p class="admin-topbar-label">
+                    CONTROL CENTER
+                </p>
+
+                <strong>
+                    Respawn PC Services
+                </strong>
+
+            </div>
+
+
+            <div class="admin-topbar-actions">
+
+                <span
+                    id="adminLoading"
+                    class="admin-live-label"
+                >
+
+                    <span class="live-dot"></span>
+
+                    LIVE
+
+                </span>
+
+
+                <button
+                    id="refreshButton"
+                    type="button"
+                    class="admin-nav-button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <main
+            id="adminDashboard"
+            class="admin-content"
+        >
+
+
+            <section class="admin-hero">
+
+                <div>
+
+                    <p class="eyebrow">
+                        ADMIN CONTROL CENTER
+                    </p>
+
+                    <h1>
+                        Service
+                        <span>
+                            Dashboard.
+                        </span>
+                    </h1>
+
+                    <p>
+                        Manage requests, appointments,
+                        payments, customers, and service
+                        activity in real time.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/index.html"
+                    class="secondary-button"
+                >
+                    View Public Site ↗
+                </a>
+
+            </section>
+
+
+            <section class="admin-section">
+
+                <div class="admin-section-title">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            OVERVIEW
+                        </p>
+
+                        <h2>
+                            Business Summary
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-stats-grid">
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            CUSTOMERS
+                        </span>
+
+                        <strong id="totalCustomers">
+                            0
+                        </strong>
+
+                        <small>
+                            Registered customers
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            BOOKINGS
+                        </span>
+
+                        <strong id="totalBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            Total service requests
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            PENDING
+                        </span>
+
+                        <strong id="pendingBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            Awaiting confirmation
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            CONFIRMED
+                        </span>
+
+                        <strong id="confirmedBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            Scheduled services
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            COMPLETED
+                        </span>
+
+                        <strong id="completedBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            Finished services
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            CANCELLED
+                        </span>
+
+                        <strong id="cancelledBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            Cancelled requests
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            PAID
+                        </span>
+
+                        <strong id="paidBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            Payments recorded
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span>
+                            UNPAID ACTIVE
+                        </span>
+
+                        <strong id="unpaidActiveBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            Still awaiting payment
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="admin-section">
+
+                <div class="admin-section-title">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            OPERATIONS
+                        </p>
+
+                        <h2>
+                            Today's Schedule
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        id="todayScheduleCount"
+                        class="toolbar-count"
+                    >
+                        0 appointments
+                    </span>
+
+                </div>
+
+
+                <div class="admin-operation-grid">
+
+                    <div class="admin-operation-card">
+
+                        <span class="admin-operation-icon">
+                            IN
+                        </span>
+
+
+                        <div>
+
+                            <small>
+                                TODAY'S DROP-OFFS
+                            </small>
+
+                            <strong id="todayDropOffs">
+                                0
+                            </strong>
+
+                            <p id="todayDropOffDescription">
+                                No drop-offs scheduled today.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-operation-card">
+
+                        <span class="admin-operation-icon">
+                            OUT
+                        </span>
+
+
+                        <div>
+
+                            <small>
+                                UPCOMING PICKUPS
+                            </small>
+
+                            <strong id="upcomingPickups">
+                                0
+                            </strong>
+
+                            <p>
+                                Active services with pickup dates.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-operation-card">
+
+                        <span class="admin-operation-icon">
+                            ACT
+                        </span>
+
+
+                        <div>
+
+                            <small>
+                                ACTIVE BOOKINGS
+                            </small>
+
+                            <strong id="activeBookings">
+                                0
+                            </strong>
+
+                            <p>
+                                Pending and confirmed bookings.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="todaySchedule"
+                    class="today-schedule"
+                ></div>
+
+            </section>
+
+
+            <section class="admin-section">
+
+                <div class="admin-section-title">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            CUSTOMER REQUESTS
+                        </p>
+
+                        <h2>
+                            Recent Activity
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="recentBookings"
+                    class="recent-bookings"
+                ></div>
+
+            </section>
+
+
+            <section
+                id="bookingsSection"
+                class="admin-section admin-anchor-section"
+            >
+
+                <div class="admin-section-title">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            MANAGEMENT
+                        </p>
+
+                        <h2>
+                            All Bookings
+                        </h2>
+
+                    </div>
+
+
+                    <span class="booking-count-label">
+
+                        <strong id="bookingCount">
+                            0
+                        </strong>
+
+                        matching
+
+                    </span>
+
+                </div>
+
+
+                <div class="admin-filter-bar">
+
+
+                    <div
+                        class="filter-group filter-search"
+                    >
+
+                        <label for="bookingSearch">
+                            Search
+                        </label>
+
+                        <input
+                            id="bookingSearch"
+                            type="search"
+                            placeholder="Customer, email, service..."
+                        >
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="statusFilter">
+                            Status
+                        </label>
+
+                        <select
+                            id="statusFilter"
+                        >
+
+                            <option value="All">
+                                All statuses
+                            </option>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Confirmed">
+                                Confirmed
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                            <option value="Cancelled">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="serviceFilter">
+                            Service
+                        </label>
+
+                        <select
+                            id="serviceFilter"
+                        >
+
+                            <option value="All">
+                                All services
+                            </option>
+
+                            <option value="Gamer Rig Deep Cleaning">
+                                Gamer Rig Deep Cleaning
+                            </option>
+
+                            <option value="Thermal Paste Replacement">
+                                Thermal Paste Replacement
+                            </option>
+
+                            <option value="Diagnostic Checks">
+                                Diagnostic Checks
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        id="clearFilters"
+                        type="button"
+                        class="secondary-button filter-clear"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="adminBookingsList"
+                    class="admin-bookings-list"
+                ></div>
+
+            </section>
+
+
+            <section
+                id="customersSection"
+                class="admin-section admin-anchor-section"
+            >
+
+                <div class="admin-section-title">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            ACCOUNTS
+                        </p>
+
+                        <h2>
+                            Customers
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        id="customerCount"
+                        class="toolbar-count"
+                    >
+                        0 customers
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="customersList"
+                    class="customers-list"
+                ></div>
+
+            </section>
+
+
+            <section
+                id="paymentsSection"
+                class="admin-section admin-anchor-section"
+            >
+
+                <div class="admin-section-title">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PAYMENT RECORDS
+                        </p>
+
+                        <h2>
+                            Payments
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        id="paymentCount"
+                        class="toolbar-count"
+                    >
+                        0 paid
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="paymentsList"
+                    class="payments-list"
+                ></div>
+
+            </section>
+
+
+            <section
+                id="reportsSection"
+                class="admin-section admin-anchor-section"
+            >
+
+                <div class="admin-section-title">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            REPORTS
+                        </p>
+
+                        <h2>
+                            Service Reports
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reports-grid">
+
+
+                    <div class="report-card">
+
+                        <h3>
+                            Booking Status
+                        </h3>
+
+                        <div id="statusReport"></div>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <h3>
+                            Services Requested
+                        </h3>
+
+                        <div id="serviceReport"></div>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <h3>
+                            Payment Methods
+                        </h3>
+
+                        <div id="paymentMethodReport"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <div
+        id="paymentModal"
+        class="modal-overlay"
+        hidden
+    >
+
+        <div class="payment-modal">
+
+            <div class="payment-modal-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        RECORD PAYMENT
+                    </p>
+
+                    <h2>
+                        Payment Details
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="closePaymentModal"
+                    type="button"
+                    class="modal-close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="payment-summary">
+
+                <p>
+
+                    <span>
+                        Customer
+                    </span>
+
+                    <strong id="paymentCustomer">
+                        —
+                    </strong>
+
+                </p>
+
+
+                <p>
+
+                    <span>
+                        Service
+                    </span>
+
+                    <strong id="paymentService">
+                        —
+                    </strong>
+
+                </p>
+
+
+                <p>
+
+                    <span>
+                        Booking ID
+                    </span>
+
+                    <strong id="paymentBookingId">
+                        —
+                    </strong>
+
+                </p>
+
+            </div>
+
+
+            <form id="paymentForm">
+
+
+                <div class="form-group">
+
+                    <label for="paymentAmount">
+                        Payment Amount
+                    </label>
+
+                    <input
+                        id="paymentAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="paymentMethod">
+                        Payment Method
+                    </label>
+
+                    <select
+                        id="paymentMethod"
+                    >
+
+                        <option value="Cash">
+                            Cash
+                        </option>
+
+                        <option value="GCash">
+                            GCash
+                        </option>
+
+                        <option value="Maya">
+                            Maya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="payment-demo-note">
+
+                    <strong>
+                        Manual recording
+                    </strong>
+
+                    <span>
+                        Use this control after the customer
+                        has actually paid. This demo does not
+                        process money automatically.
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="paymentMessage"
+                    class="form-message"
+                ></div>
+
+
+                <div class="payment-modal-actions">
+
+                    <button
+                        id="cancelPayment"
+                        type="button"
+                        class="secondary-button"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        id="savePayment"
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Mark as Paid
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="/js/admin-dashboard.js"
+    ></script>
+
+
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+
+</html>

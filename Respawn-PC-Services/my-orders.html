@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - Respawn PC Services</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">RESPAWN<span>/</span>PC SERVICES</a>
+            <div class="nav-links">
+                <a href="/dashboard.html">Dashboard</a>
+                <a href="/store.html">PC Store</a>
+                <a href="/cart.html" class="store-cart-nav">Cart <span data-cart-count hidden>0</span></a>
+                <button id="logoutButton" type="button" class="nav-logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-page">
+        <div class="dashboard-container">
+            <section class="dashboard-heading dashboard-heading-row">
+                <div>
+                    <p class="eyebrow">PC STORE</p>
+                    <h1>My Orders</h1>
+                    <p>Track your component and accessory orders in real time.</p>
+                </div>
+                <a href="/store.html" class="primary-button">Shop Products</a>
+            </section>
+
+            <section class="dashboard-card">
+                <div class="list-toolbar">
+                    <div>
+                        <p class="card-eyebrow">ORDER HISTORY</p>
+                        <h2>Store Orders</h2>
+                    </div>
+                    <span id="orderCount" class="toolbar-count">0 orders</span>
+                </div>
+                <div id="ordersLoading" class="store-orders-loading">
+                    <div class="store-order-skeleton"></div>
+                    <div class="store-order-skeleton"></div>
+                </div>
+                <div id="ordersList" class="store-orders-list" hidden></div>
+                <div id="ordersEmpty" class="store-empty compact-store-empty" hidden>
+                    <div class="store-empty-icon">+</div>
+                    <h3>No store orders yet</h3>
+                    <p>Your component purchases will appear here.</p>
+                    <a href="/store.html" class="primary-button">Browse Store</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="/js/my-orders.js"></script>
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+</html>

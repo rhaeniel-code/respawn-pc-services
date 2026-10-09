@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Orders - Respawn PC Services</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+    <aside class="admin-sidebar">
+        <div class="admin-brand">
+            <a href="/index.html" class="logo">RESPAWN<span>/</span></a>
+            <p>ADMIN CONTROL</p>
+        </div>
+        <nav class="admin-sidebar-nav">
+            <a href="/admin-dashboard.html" class="admin-sidebar-link"><span class="sidebar-icon">DB</span>Dashboard</a>
+            <a href="/admin-dashboard.html#bookingsSection" class="admin-sidebar-link"><span class="sidebar-icon">BK</span>Bookings</a>
+            <a href="/admin-dashboard.html#customersSection" class="admin-sidebar-link"><span class="sidebar-icon">CU</span>Customers</a>
+            <a href="/admin-dashboard.html#paymentsSection" class="admin-sidebar-link"><span class="sidebar-icon">₱</span>Payments</a>
+            <a href="/admin-products.html" class="admin-sidebar-link"><span class="sidebar-icon">PC</span>Store Inventory</a>
+            <a href="/admin-orders.html" class="admin-sidebar-link active"><span class="sidebar-icon">OR</span>Store Orders</a>
+            <a href="/admin-dashboard.html#reportsSection" class="admin-sidebar-link"><span class="sidebar-icon">RP</span>Reports</a>
+            <a href="/index.html" class="admin-sidebar-link"><span class="sidebar-icon">↗</span>Public Site</a>
+        </nav>
+        <div class="admin-sidebar-bottom">
+            <div class="admin-user-mini"><span class="admin-avatar">A</span><div><strong>Administrator</strong><small>Respawn PC Services</small></div></div>
+            <button id="logoutButton" type="button" class="admin-sidebar-logout">Logout</button>
+        </div>
+    </aside>
+
+    <div class="admin-main">
+        <header class="admin-topbar">
+            <div class="admin-topbar-copy">
+                <p class="admin-topbar-label">STORE MANAGEMENT</p>
+                <strong>Customer Orders</strong>
+            </div>
+            <div class="admin-topbar-actions"><a href="/store.html" class="admin-nav-button">View Store ↗</a></div>
+        </header>
+
+        <main class="admin-content">
+            <section class="admin-hero">
+                <div>
+                    <p class="eyebrow">ORDER CONTROL</p>
+                    <h1>Store <span>Orders.</span></h1>
+                    <p>Review product orders, confirm payment, and move each order through pickup status.</p>
+                </div>
+            </section>
+
+            <section class="admin-section">
+                <div class="admin-section-title">
+                    <div><p class="eyebrow">ORDER QUEUE</p><h2>All Store Orders</h2></div>
+                    <span id="adminOrderCount" class="toolbar-count">0 orders</span>
+                </div>
+                <div class="admin-filter-bar">
+                    <div class="store-search admin-store-search">
+                        <span>Search</span>
+                        <input id="orderSearch" type="search" placeholder="Search order or customer...">
+                    </div>
+                    <select id="orderStatusFilter" class="admin-filter-select">
+                        <option value="">All statuses</option>
+                        <option>Pending</option>
+                        <option>Confirmed</option>
+                        <option>Processing</option>
+                        <option>Ready for Pickup</option>
+                        <option>Completed</option>
+                        <option>Cancelled</option>
+                    </select>
+                </div>
+                <div id="adminOrdersList" class="store-admin-orders-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/js/admin-orders.js"></script>
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+</html>

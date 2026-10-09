@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        PC Store - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+
+            <a
+                href="/index.html"
+                class="logo"
+            >
+                RESPAWN<span>/</span>PC SERVICES
+            </a>
+
+
+            <div class="nav-links">
+
+
+                <a
+                    href="/index.html"
+                >
+                    Home
+                </a>
+
+
+                <!-- ONE Dashboard link -->
+                <a
+                    id="storeDashboardLink"
+                    href="/dashboard.html"
+                >
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="/my-bookings.html"
+                >
+                    My Bookings
+                </a>
+
+
+                <a
+                    href="/store.html"
+                    class="nav-store-link"
+                >
+                    PC Store
+                </a>
+
+
+                <a
+                    href="/cart.html"
+                    class="store-cart-nav"
+                >
+
+                    Cart
+
+                    <span
+                        data-cart-count
+                        hidden
+                    >
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- Becomes Logout when signed in -->
+                <a
+                    id="storeAccountLink"
+                    href="/login.html"
+                    class="nav-button"
+                >
+                    Login
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         STORE
+    ====================================================== -->
+
+    <main class="store-page">
+
+        <div class="store-container">
+
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="store-hero">
+
+
+                <div>
+
+                    <p class="eyebrow">
+                        RESPAWN PC STORE
+                    </p>
+
+
+                    <h1>
+
+                        Parts for your next
+
+                        <span>
+                            upgrade.
+                        </span>
+
+                    </h1>
+
+
+                    <p>
+
+                        Browse gaming PC components
+                        and accessories, add them to
+                        your cart, then place a simple
+                        pickup order with Respawn PC Services.
+
+                    </p>
+
+
+                    <div
+                        class="store-hero-actions"
+                    >
+
+                        <a
+                            href="#products"
+                            class="primary-button"
+                        >
+                            Shop Products
+                        </a>
+
+
+                        <a
+                            href="/booking.html"
+                            class="secondary-button"
+                        >
+                            Book a Service
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="store-hero-panel"
+                >
+
+
+                    <div
+                        class="store-hero-stat"
+                    >
+
+                        <strong>
+                            IN STOCK
+                        </strong>
+
+                        <span>
+                            Live inventory
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="store-hero-stat"
+                    >
+
+                        <strong>
+                            LOCAL PICKUP
+                        </strong>
+
+                        <span>
+                            Respawn PC Services
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="store-hero-stat"
+                    >
+
+                        <strong>
+                            SECURE CART
+                        </strong>
+
+                        <span>
+                            Order history included
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PRODUCTS
+            ================================================== -->
+
+            <section
+                id="products"
+                class="store-section"
+            >
+
+
+                <div
+                    class="store-section-heading"
+                >
+
+                    <div>
+
+                        <p class="eyebrow">
+                            COMPONENTS &amp; ACCESSORIES
+                        </p>
+
+
+                        <h2>
+                            Shop the loadout
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        id="productCount"
+                        class="toolbar-count"
+                    >
+                        Loading...
+                    </span>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SEARCH
+                ================================================== -->
+
+                <div
+                    class="store-toolbar"
+                >
+
+
+                    <label
+                        class="store-search"
+                    >
+
+                        <span>
+                            Search
+                        </span>
+
+
+                        <input
+                            id="searchProducts"
+                            type="search"
+                            placeholder="Search products..."
+                        >
+
+                    </label>
+
+
+                    <div
+                        id="categoryFilters"
+                        class="store-category-filters"
+                    ></div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LOADING
+                ================================================== -->
+
+                <div
+                    id="storeLoading"
+                    class="store-loading-grid"
+                >
+
+                    <div
+                        class="store-skeleton-card"
+                    ></div>
+
+
+                    <div
+                        class="store-skeleton-card"
+                    ></div>
+
+
+                    <div
+                        class="store-skeleton-card"
+                    ></div>
+
+
+                    <div
+                        class="store-skeleton-card"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PRODUCT GRID
+                ================================================== -->
+
+                <div
+                    id="productsGrid"
+                    class="store-product-grid"
+                    hidden
+                ></div>
+
+
+
+                <!-- =================================================
+                     NO SEARCH RESULTS
+                ================================================== -->
+
+                <section
+                    id="storeEmpty"
+                    class="store-empty"
+                    hidden
+                >
+
+                    <div
+                        class="store-empty-icon"
+                    >
+                        PC
+                    </div>
+
+
+                    <h3>
+                        No products found
+                    </h3>
+
+
+                    <p>
+                        Try another search or category.
+                    </p>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     NO INVENTORY / ERROR
+                ================================================== -->
+
+                <section
+                    id="storeNoInventory"
+                    class="store-empty"
+                    hidden
+                >
+
+                    <div
+                        class="store-empty-icon"
+                    >
+                        +
+                    </div>
+
+
+                    <h3>
+                        Store inventory is empty
+                    </h3>
+
+
+                    <p>
+                        Sign in as an administrator
+                        and use the Inventory page to
+                        manage store products.
+                    </p>
+
+
+                    <a
+                        href="/admin-products.html"
+                        class="primary-button"
+                    >
+                        Open Inventory
+                    </a>
+
+                </section>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Respawn PC Services.
+            Built for gamers.
+        </p>
+
+    </footer>
+
+
+    <script
+        type="module"
+        src="/js/store.js"
+    ></script>
+
+
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+
+</html>

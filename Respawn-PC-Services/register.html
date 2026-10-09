@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Register - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body class="auth-page">
+
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+
+            <div class="auth-header">
+
+                <a
+                    href="/index.html"
+                    class="logo"
+                >
+                    RESPAWN<span>/</span>PC SERVICES
+                </a>
+
+
+                <div class="auth-kicker">
+                    NEW PLAYER
+                </div>
+
+
+                <h1>
+                    Create Account
+                </h1>
+
+
+                <p>
+                    Set up your account to book PC services
+                    and track appointments.
+                </p>
+
+            </div>
+
+
+            <form
+                id="registerForm"
+                class="auth-form"
+            >
+
+
+                <div class="form-group">
+
+                    <label for="registerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="At least 6 characters"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <div
+                    id="registerMessage"
+                    class="form-message"
+                ></div>
+
+
+                <button
+                    type="submit"
+                    id="registerButton"
+                    class="primary-button full-width"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div class="auth-divider">
+
+                <span>
+                    JOIN THE SERVICE QUEUE
+                </span>
+
+            </div>
+
+
+            <p class="auth-footer">
+
+                Already have an account?
+
+                <a href="/login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+            <p class="auth-footer">
+
+                <a href="/index.html">
+                    ← Back to Home
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="/js/auth.js"
+    ></script>
+
+
+</body>
+
+</html>

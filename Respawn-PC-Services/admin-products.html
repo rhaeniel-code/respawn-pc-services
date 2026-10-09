@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Inventory - Respawn PC Services</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+    <aside class="admin-sidebar">
+        <div class="admin-brand">
+            <a href="/index.html" class="logo">RESPAWN<span>/</span></a>
+            <p>ADMIN CONTROL</p>
+        </div>
+        <nav class="admin-sidebar-nav">
+            <a href="/admin-dashboard.html" class="admin-sidebar-link"><span class="sidebar-icon">DB</span>Dashboard</a>
+            <a href="/admin-dashboard.html#bookingsSection" class="admin-sidebar-link"><span class="sidebar-icon">BK</span>Bookings</a>
+            <a href="/admin-dashboard.html#customersSection" class="admin-sidebar-link"><span class="sidebar-icon">CU</span>Customers</a>
+            <a href="/admin-dashboard.html#paymentsSection" class="admin-sidebar-link"><span class="sidebar-icon">₱</span>Payments</a>
+            <a href="/admin-products.html" class="admin-sidebar-link active"><span class="sidebar-icon">PC</span>Store Inventory</a>
+            <a href="/admin-orders.html" class="admin-sidebar-link"><span class="sidebar-icon">OR</span>Store Orders</a>
+            <a href="/admin-dashboard.html#reportsSection" class="admin-sidebar-link"><span class="sidebar-icon">RP</span>Reports</a>
+            <a href="/index.html" class="admin-sidebar-link"><span class="sidebar-icon">↗</span>Public Site</a>
+        </nav>
+        <div class="admin-sidebar-bottom">
+            <div class="admin-user-mini">
+                <span class="admin-avatar">A</span>
+                <div><strong>Administrator</strong><small>Respawn PC Services</small></div>
+            </div>
+            <button id="logoutButton" type="button" class="admin-sidebar-logout">Logout</button>
+        </div>
+    </aside>
+
+    <div class="admin-main">
+        <header class="admin-topbar">
+            <div class="admin-topbar-copy">
+                <p class="admin-topbar-label">STORE MANAGEMENT</p>
+                <strong>PC Components &amp; Accessories</strong>
+            </div>
+            <div class="admin-topbar-actions">
+                <a href="/store.html" class="admin-nav-button">View Store ↗</a>
+            </div>
+        </header>
+
+        <main class="admin-content">
+            <section class="admin-hero">
+                <div>
+                    <p class="eyebrow">INVENTORY CONTROL</p>
+                    <h1>Store <span>Inventory.</span></h1>
+                    <p>Add products, adjust prices, and maintain the live stock count used by checkout.</p>
+                </div>
+                <button id="seedProductsButton" type="button" class="primary-button">Load Demo Products</button>
+            </section>
+
+            <section class="admin-section">
+                <div class="store-admin-form-grid">
+                    <div class="dashboard-card">
+                        <div class="dashboard-card-heading">
+                            <div>
+                                <p class="card-eyebrow">PRODUCT EDITOR</p>
+                                <h2 id="productFormTitle">Add Product</h2>
+                            </div>
+                        </div>
+                        <form id="productForm">
+                            <input id="productId" type="hidden">
+                            <div class="form-group">
+                                <label for="productFormName">Product Name</label>
+                                <input id="productFormName" type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productFormCategory">Category</label>
+                                <select id="productFormCategory">
+                                    <option>Memory</option>
+                                    <option>Storage</option>
+                                    <option>Graphics</option>
+                                    <option>Processor</option>
+                                    <option>Motherboard</option>
+                                    <option>Monitor</option>
+                                    <option>Keyboard</option>
+                                    <option>Mouse</option>
+                                    <option>Power Supply</option>
+                                    <option>Cooler</option>
+                                    <option>Case</option>
+                                    <option>Fan</option>
+                                    <option>Cable</option>
+                                    <option>Accessory</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="productFormDescription">Description</label>
+                                <textarea id="productFormDescription" rows="5" required></textarea>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="productFormPrice">Price (PHP)</label>
+                                    <input id="productFormPrice" type="number" min="0" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productFormStock">Stock</label>
+                                    <input id="productFormStock" type="number" min="0" step="1" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productFormImage">Image URL (optional)</label>
+                                <input id="productFormImage" type="url" placeholder="https://..."><small class="store-form-help">Leave empty to use the built-in category icon.</small>
+                            </div>
+                            <div id="productFormMessage" class="form-message"></div>
+                            <div class="store-form-actions">
+                                <button id="saveProductButton" type="submit" class="primary-button">Save Product</button>
+                                <button id="cancelEditButton" type="button" class="secondary-button" hidden>Cancel Edit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="dashboard-card-heading">
+                            <div>
+                                <p class="card-eyebrow">INVENTORY SNAPSHOT</p>
+                                <h2>Stock Overview</h2>
+                            </div>
+                        </div>
+                        <div class="store-admin-stats">
+                            <div><span>PRODUCTS</span><strong id="inventoryProductCount">0</strong></div>
+                            <div><span>UNITS IN STOCK</span><strong id="inventoryUnitCount">0</strong></div>
+                            <div><span>LOW STOCK</span><strong id="inventoryLowStockCount">0</strong></div>
+                            <div><span>OUT OF STOCK</span><strong id="inventoryOutStockCount">0</strong></div>
+                        </div>
+                        <div class="payment-demo-note">
+                            <strong>Inventory rule</strong>
+                            <span>Customer checkout re-checks current stock and reserves units in the same Firestore transaction.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="admin-section">
+                <div class="admin-section-title">
+                    <div><p class="eyebrow">PRODUCT CATALOG</p><h2>All Products</h2></div>
+                    <span id="inventorySummary" class="toolbar-count">0 products</span>
+                </div>
+                <div class="admin-filter-bar">
+                    <div class="store-search admin-store-search">
+                        <span>Search</span>
+                        <input id="inventorySearch" type="search" placeholder="Search inventory...">
+                    </div>
+                    <select id="inventoryCategoryFilter" class="admin-filter-select">
+                        <option value="">All categories</option>
+                    </select>
+                </div>
+                <div id="inventoryList" class="store-admin-products-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/js/admin-products.js"></script>
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+</html>

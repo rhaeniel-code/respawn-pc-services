@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard - Respawn PC Services
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+
+    <!-- =====================================================
+         DASHBOARD AUTH LOADING SCREEN
+         ===================================================== -->
+
+    <style>
+
+        .dashboard-auth-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(
+                        0,
+                        245,
+                        212,
+                        0.07
+                    ),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(
+                        85,
+                        60,
+                        160,
+                        0.08
+                    ),
+                    transparent 35%
+                ),
+                #070a0f;
+
+            transition:
+                opacity 0.2s ease,
+                visibility 0.2s ease;
+        }
+
+
+        .dashboard-auth-gate[hidden] {
+            display: none !important;
+        }
+
+
+        .dashboard-auth-gate-card {
+            width:
+                min(
+                    420px,
+                    calc(100% - 40px)
+                );
+
+            padding:
+                32px;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+            border-radius:
+                20px;
+
+            background:
+                rgba(
+                    15,
+                    19,
+                    27,
+                    0.94
+                );
+
+            box-shadow:
+                0 20px 60px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.35
+                );
+
+            text-align:
+                center;
+        }
+
+
+        .dashboard-auth-logo {
+            margin-bottom:
+                10px;
+
+            font-size:
+                22px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1.5px;
+
+            color:
+                #f4f7fa;
+        }
+
+
+        .dashboard-auth-logo span {
+            color:
+                #00f5d4;
+        }
+
+
+        .dashboard-auth-label {
+            margin-bottom:
+                18px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                2px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                #00f5d4;
+        }
+
+
+        .dashboard-auth-spinner {
+            width:
+                34px;
+
+            height:
+                34px;
+
+            margin:
+                0 auto 16px;
+
+            border:
+                3px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.1
+                );
+
+            border-top-color:
+                #00f5d4;
+
+            border-radius:
+                50%;
+
+            animation:
+                respawnDashboardSpin
+                0.8s linear infinite;
+        }
+
+
+        .dashboard-auth-text {
+            margin:
+                0;
+
+            color:
+                #98a7bb;
+
+            font-size:
+                15px;
+        }
+
+
+        @keyframes respawnDashboardSpin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         AUTH CHECK OVERLAY
+         ===================================================== -->
+
+    <div
+        id="dashboardAuthGate"
+        class="dashboard-auth-gate"
+    >
+
+        <div
+            class="dashboard-auth-gate-card"
+        >
+
+            <div
+                class="dashboard-auth-logo"
+            >
+                RESPAWN<span>/</span>PC SERVICES
+            </div>
+
+
+            <div
+                class="dashboard-auth-label"
+            >
+                PLAYER ACCESS
+            </div>
+
+
+            <div
+                class="dashboard-auth-spinner"
+                aria-hidden="true"
+            ></div>
+
+
+            <p
+                class="dashboard-auth-text"
+            >
+                Loading your dashboard...
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+
+            <a
+                href="/index.html"
+                class="logo"
+            >
+                RESPAWN<span>/</span>PC SERVICES
+            </a>
+
+
+            <div class="nav-links">
+
+
+                <a
+                    href="/index.html"
+                >
+                    Home
+                </a>
+
+
+                <a
+                    href="/my-bookings.html"
+                >
+                    My Bookings
+                </a>
+
+
+                <a
+                    href="/store.html"
+                >
+                    PC Store
+                </a>
+
+
+                <a
+                    href="/booking.html"
+                    class="nav-button"
+                >
+                    Book a Service
+                </a>
+
+
+                <button
+                    id="logoutButton"
+                    type="button"
+                    class="nav-logout"
+                >
+                    Logout
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN DASHBOARD
+         ===================================================== -->
+
+    <main class="dashboard-page">
+
+
+        <div
+            class="dashboard-container"
+        >
+
+
+            <!-- =================================================
+                 DASHBOARD HEADER
+                 ================================================= -->
+
+            <section
+                class="dashboard-heading dashboard-heading-row"
+            >
+
+
+                <div>
+
+
+                    <p
+                        class="eyebrow"
+                    >
+                        PLAYER DASHBOARD
+                    </p>
+
+
+                    <h1>
+
+                        Welcome,
+
+                        <span
+                            id="welcomeName"
+                        >
+                            Customer
+                        </span>
+
+                    </h1>
+
+
+                    <p>
+
+                        Everything about your
+                        Respawn appointment in
+                        one place.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <div
+                    class="live-status"
+                >
+
+
+                    <span
+                        class="live-dot"
+                    ></span>
+
+
+                    LIVE UPDATES
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CURRENT APPOINTMENT
+                 ================================================= -->
+
+            <section
+                id="activeBookingCard"
+                class="dashboard-card active-booking-card"
+            >
+
+
+                <div
+                    class="dashboard-card-heading"
+                >
+
+
+                    <div>
+
+
+                        <p
+                            class="card-eyebrow"
+                        >
+                            CURRENT APPOINTMENT
+                        </p>
+
+
+                        <h2>
+                            Next service
+                        </h2>
+
+
+                    </div>
+
+
+
+                    <!-- CALENDAR ICON -->
+
+                    <div
+                        class="dashboard-card-icon icon-box"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                        >
+
+                            <rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="17"
+                                rx="2"
+                            ></rect>
+
+
+                            <line
+                                x1="16"
+                                y1="2"
+                                x2="16"
+                                y2="6"
+                            ></line>
+
+
+                            <line
+                                x1="8"
+                                y1="2"
+                                x2="8"
+                                y2="6"
+                            ></line>
+
+
+                            <line
+                                x1="3"
+                                y1="9"
+                                x2="21"
+                                y2="9"
+                            ></line>
+
+
+                        </svg>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LOADING SKELETON
+                     ================================================= -->
+
+                <div
+                    id="activeBookingSkeleton"
+                    class="skeleton-block"
+                >
+
+
+                    <div
+                        class="skeleton skeleton-wide"
+                    ></div>
+
+
+                    <div
+                        class="skeleton-grid"
+                    >
+
+
+                        <div
+                            class="skeleton"
+                        ></div>
+
+
+                        <div
+                            class="skeleton"
+                        ></div>
+
+
+                        <div
+                            class="skeleton"
+                        ></div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACTIVE BOOKING CONTENT
+                     ================================================= -->
+
+                <div
+                    id="activeBookingContent"
+                    class="active-booking-content"
+                    hidden
+                >
+
+
+                    <div
+                        class="active-booking-main"
+                    >
+
+
+                        <div>
+
+
+                            <span
+                                class="active-service-label"
+                            >
+                                SERVICE
+                            </span>
+
+
+                            <h3
+                                id="activeService"
+                            >
+                                —
+                            </h3>
+
+
+                        </div>
+
+
+
+                        <span
+                            id="activeStatus"
+                            class="status-badge status-pending"
+                        >
+                            Pending
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div
+                        class="active-booking-grid"
+                    >
+
+
+                        <div>
+
+
+                            <span>
+                                DROP-OFF
+                            </span>
+
+
+                            <strong
+                                id="activeDropOff"
+                            >
+                                —
+                            </strong>
+
+
+                        </div>
+
+
+
+                        <div>
+
+
+                            <span>
+                                PICKUP
+                            </span>
+
+
+                            <strong
+                                id="activePickup"
+                            >
+                                —
+                            </strong>
+
+
+                        </div>
+
+
+
+                        <div>
+
+
+                            <span>
+                                PAYMENT
+                            </span>
+
+
+                            <strong
+                                id="activePayment"
+                            >
+                                UNPAID
+                            </strong>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- BOOKING PROGRESS -->
+
+                    <div
+                        class="booking-progress-mini"
+                    >
+
+
+                        <div
+                            class="mini-progress-track"
+                        >
+
+                            <span
+                                id="miniProgressFill"
+                            ></span>
+
+                        </div>
+
+
+                        <span
+                            id="miniProgressLabel"
+                        >
+                            Pending confirmation
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- BOOKING ACTIONS -->
+
+                    <div
+                        class="button-row"
+                    >
+
+
+                        <a
+                            id="activeDetailsLink"
+                            href="/my-bookings.html"
+                            class="primary-button"
+                        >
+                            View Details →
+                        </a>
+
+
+                        <a
+                            href="/my-bookings.html"
+                            class="secondary-button"
+                        >
+                            Booking History
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     NO ACTIVE BOOKING
+                     ================================================= -->
+
+                <div
+                    id="activeBookingEmpty"
+                    class="active-booking-empty"
+                    hidden
+                >
+
+
+                    <div>
+
+
+                        <!-- EMPTY CALENDAR ICON -->
+
+                        <div
+                            class="empty-icon"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+
+                                <rect
+                                    x="3"
+                                    y="4"
+                                    width="18"
+                                    height="17"
+                                    rx="2"
+                                ></rect>
+
+
+                                <line
+                                    x1="16"
+                                    y1="2"
+                                    x2="16"
+                                    y2="6"
+                                ></line>
+
+
+                                <line
+                                    x1="8"
+                                    y1="2"
+                                    x2="8"
+                                    y2="6"
+                                ></line>
+
+
+                                <line
+                                    x1="3"
+                                    y1="9"
+                                    x2="21"
+                                    y2="9"
+                                ></line>
+
+
+                                <line
+                                    x1="9"
+                                    y1="14"
+                                    x2="15"
+                                    y2="18"
+                                ></line>
+
+
+                                <line
+                                    x1="15"
+                                    y1="14"
+                                    x2="9"
+                                    y2="18"
+                                ></line>
+
+
+                            </svg>
+
+                        </div>
+
+
+
+                        <h3>
+                            No active appointment
+                        </h3>
+
+
+                        <p>
+
+                            Your next service will
+                            appear here after you book.
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <a
+                        href="/booking.html"
+                        class="primary-button"
+                    >
+                        Book a Service →
+                    </a>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DASHBOARD METRICS
+                 ================================================= -->
+
+            <section
+                class="dashboard-metrics"
+            >
+
+
+                <div
+                    class="metric-card"
+                >
+
+
+                    <span>
+                        ACTIVE
+                    </span>
+
+
+                    <strong
+                        id="metricActive"
+                    >
+                        0
+                    </strong>
+
+
+                    <small>
+                        Current requests
+                    </small>
+
+
+                </div>
+
+
+
+                <div
+                    class="metric-card"
+                >
+
+
+                    <span>
+                        COMPLETED
+                    </span>
+
+
+                    <strong
+                        id="metricCompleted"
+                    >
+                        0
+                    </strong>
+
+
+                    <small>
+                        Finished services
+                    </small>
+
+
+                </div>
+
+
+
+                <div
+                    class="metric-card"
+                >
+
+
+                    <span>
+                        PAID
+                    </span>
+
+
+                    <strong
+                        id="metricPaid"
+                    >
+                        0
+                    </strong>
+
+
+                    <small>
+                        Receipts available
+                    </small>
+
+
+                </div>
+
+
+
+                <div
+                    class="metric-card"
+                >
+
+
+                    <span>
+                        HISTORY
+                    </span>
+
+
+                    <strong
+                        id="metricTotal"
+                    >
+                        0
+                    </strong>
+
+
+                    <small>
+                        Total bookings
+                    </small>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 QUICK ACTIONS
+                 ================================================= -->
+
+            <section
+                class="dashboard-card quick-actions-card"
+            >
+
+
+                <div
+                    class="dashboard-card-heading"
+                >
+
+
+                    <div>
+
+
+                        <p
+                            class="card-eyebrow"
+                        >
+                            QUICK ACTIONS
+                        </p>
+
+
+                        <h2>
+                            What do you need?
+                        </h2>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div
+                    class="quick-actions-grid"
+                >
+
+
+                    <!-- BOOK A SERVICE -->
+
+                    <a
+                        href="/booking.html"
+                        class="quick-action"
+                    >
+
+
+                        <span
+                            class="icon-box"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="9"
+                                ></circle>
+
+
+                                <line
+                                    x1="12"
+                                    y1="8"
+                                    x2="12"
+                                    y2="16"
+                                ></line>
+
+
+                                <line
+                                    x1="8"
+                                    y1="12"
+                                    x2="16"
+                                    y2="12"
+                                ></line>
+
+
+                            </svg>
+
+                        </span>
+
+
+
+                        <div>
+
+
+                            <strong>
+                                Book a Service
+                            </strong>
+
+
+                            <small>
+                                Schedule your next visit.
+                            </small>
+
+
+                        </div>
+
+
+                    </a>
+
+
+
+                    <!-- MY BOOKINGS -->
+
+                    <a
+                        href="/my-bookings.html"
+                        class="quick-action"
+                    >
+
+
+                        <span
+                            class="icon-box"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+
+                                <line
+                                    x1="8"
+                                    y1="6"
+                                    x2="20"
+                                    y2="6"
+                                ></line>
+
+
+                                <line
+                                    x1="8"
+                                    y1="12"
+                                    x2="20"
+                                    y2="12"
+                                ></line>
+
+
+                                <line
+                                    x1="8"
+                                    y1="18"
+                                    x2="20"
+                                    y2="18"
+                                ></line>
+
+
+                                <circle
+                                    cx="4"
+                                    cy="6"
+                                    r="1"
+                                ></circle>
+
+
+                                <circle
+                                    cx="4"
+                                    cy="12"
+                                    r="1"
+                                ></circle>
+
+
+                                <circle
+                                    cx="4"
+                                    cy="18"
+                                    r="1"
+                                ></circle>
+
+
+                            </svg>
+
+                        </span>
+
+
+
+                        <div>
+
+
+                            <strong>
+                                My Bookings
+                            </strong>
+
+
+                            <small>
+                                Track status and receipts.
+                            </small>
+
+
+                        </div>
+
+
+                    </a>
+
+
+
+                    <!-- SHOP PC STORE -->
+
+                    <a
+                        href="/store.html"
+                        class="quick-action"
+                    >
+
+
+                        <span
+                            class="icon-box"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+                                <path
+                                    d="M4 9h16l-1 11H5L4 9Z"
+                                ></path>
+
+
+                                <path
+                                    d="M8 9V7a4 4 0 0 1 8 0v2"
+                                ></path>
+
+
+                                <path
+                                    d="M9 13h6"
+                                ></path>
+
+                            </svg>
+
+                        </span>
+
+
+                        <div>
+
+                            <strong>
+                                Shop PC Store
+                            </strong>
+
+                            <small>
+                                Browse components and accessories.
+                            </small>
+
+                        </div>
+
+
+                    </a>
+
+
+
+                    <!-- VIEW SERVICES -->
+
+                    <a
+                        href="/index.html#services"
+                        class="quick-action"
+                    >
+
+
+                        <span
+                            class="icon-box"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="9"
+                                ></circle>
+
+
+                                <line
+                                    x1="12"
+                                    y1="11"
+                                    x2="12"
+                                    y2="16"
+                                ></line>
+
+
+                                <circle
+                                    cx="12"
+                                    cy="7.5"
+                                    r=".8"
+                                    fill="currentColor"
+                                    stroke="none"
+                                ></circle>
+
+
+                            </svg>
+
+                        </span>
+
+
+
+                        <div>
+
+
+                            <strong>
+                                View Services
+                            </strong>
+
+
+                            <small>
+                                See services and prices.
+                            </small>
+
+
+                        </div>
+
+
+                    </a>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROFILE
+                 ================================================= -->
+
+            <section
+                class="dashboard-card"
+            >
+
+
+                <div
+                    class="dashboard-card-heading"
+                >
+
+
+                    <div>
+
+
+                        <p
+                            class="card-eyebrow"
+                        >
+                            PROFILE
+                        </p>
+
+
+                        <h2>
+                            Account Information
+                        </h2>
+
+
+                    </div>
+
+
+
+                    <!-- USER ICON -->
+
+                    <div
+                        class="dashboard-card-icon icon-box"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                        >
+
+
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="4"
+                            ></circle>
+
+
+                            <path
+                                d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"
+                            ></path>
+
+
+                        </svg>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div
+                    class="profile-grid"
+                >
+
+
+                    <!-- NAME -->
+
+                    <div
+                        class="profile-item"
+                    >
+
+
+                        <span>
+                            NAME
+                        </span>
+
+
+                        <strong
+                            id="profileName"
+                        >
+                            Loading...
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div
+                        class="profile-item"
+                    >
+
+
+                        <span>
+                            EMAIL
+                        </span>
+
+
+                        <strong
+                            id="profileEmail"
+                        >
+                            Loading...
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- ROLE -->
+
+                    <div
+                        class="profile-item"
+                    >
+
+
+                        <span>
+                            ROLE
+                        </span>
+
+
+                        <strong
+                            id="profileRole"
+                        >
+                            Loading...
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer
+        class="footer"
+    >
+
+        <p>
+
+            © 2026 Respawn PC Services.
+            Built for gamers.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         DASHBOARD JAVASCRIPT
+         ===================================================== -->
+
+    <script
+        type="module"
+        src="/js/dashboard.js"
+    ></script>
+
+
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+
+</html>

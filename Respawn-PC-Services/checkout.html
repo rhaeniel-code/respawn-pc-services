@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Respawn PC Services</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">RESPAWN<span>/</span>PC SERVICES</a>
+            <div class="nav-links">
+                <a href="/store.html">PC Store</a>
+                <a href="/cart.html" class="store-cart-nav">Cart <span data-cart-count hidden>0</span></a>
+                <a href="/my-orders.html">My Orders</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="store-page">
+        <div class="store-container">
+            <section class="store-page-heading">
+                <p class="eyebrow">PC STORE</p>
+                <h1>Checkout</h1>
+                <p>Place your pickup order for the components in your cart.</p>
+            </section>
+
+            <section id="checkoutAuthRequired" class="store-empty" hidden>
+                <div class="store-empty-icon">ID</div>
+                <h3>Sign in to checkout</h3>
+                <p>Your cart is saved in this browser, so you can sign in and continue.</p>
+                <a id="checkoutLoginLink" href="/login.html" class="primary-button">Go to Login</a>
+            </section>
+
+            <section id="checkoutEmpty" class="store-empty" hidden>
+                <div class="store-empty-icon">0</div>
+                <h3>Your cart is empty</h3>
+                <p>Add products before opening checkout.</p>
+                <a href="/store.html" class="primary-button">Browse Store</a>
+            </section>
+
+            <section id="checkoutContent" class="store-checkout-layout" hidden>
+                <form id="checkoutForm" class="store-checkout-form">
+                    <div class="store-checkout-card">
+                        <div class="store-checkout-card-heading">
+                            <div>
+                                <p class="card-eyebrow">CUSTOMER</p>
+                                <h2>Your Information</h2>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="checkoutName">Full Name</label>
+                                <input id="checkoutName" type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkoutEmail">Email</label>
+                                <input id="checkoutEmail" type="email" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkoutPhone">Contact Number</label>
+                                <input id="checkoutPhone" type="tel" placeholder="09XXXXXXXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkoutFulfillment">Fulfillment</label>
+                                <select id="checkoutFulfillment">
+                                    <option value="Store Pickup">Store Pickup</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="store-checkout-card">
+                        <div class="store-checkout-card-heading">
+                            <div>
+                                <p class="card-eyebrow">PAYMENT</p>
+                                <h2>Payment Method</h2>
+                            </div>
+                        </div>
+                        <div class="store-payment-options">
+                            <label class="store-payment-option">
+                                <input type="radio" name="paymentMethod" value="Cash on Pickup" checked>
+                                <span><strong>Cash on Pickup</strong><small>Pay when you collect your order.</small></span>
+                            </label>
+                            <label class="store-payment-option">
+                                <input type="radio" name="paymentMethod" value="GCash">
+                                <span><strong>GCash</strong><small>Manual payment confirmation by admin.</small></span>
+                            </label>
+                            <label class="store-payment-option">
+                                <input type="radio" name="paymentMethod" value="Maya">
+                                <span><strong>Maya</strong><small>Manual payment confirmation by admin.</small></span>
+                            </label>
+                        </div>
+                        <div class="payment-demo-note">
+                            <strong>Demo payment flow</strong>
+                            <span>No real money is processed by this school prototype. The admin records payment after receiving it.</span>
+                        </div>
+                    </div>
+
+                    <div id="checkoutMessage" class="form-message"></div>
+
+                    <button id="placeOrderButton" type="submit" class="primary-button full-width">Place Order</button>
+                </form>
+
+                <aside class="store-summary-card">
+                    <p class="card-eyebrow">YOUR ORDER</p>
+                    <h2>Order Summary</h2>
+                    <div id="checkoutItems" class="store-checkout-items"></div>
+                    <div class="store-summary-row store-summary-total">
+                        <span>Total</span>
+                        <strong id="checkoutTotal">₱0.00</strong>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="/js/checkout.js"></script>
+    <script type="module" src="/js/notification-center.js"></script>
+</body>
+</html>
